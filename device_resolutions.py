@@ -53,7 +53,6 @@ def read_aspect_ratios(file_csv):
       next(reader, None)  # skip the header row
       return tuple(tuple(row) for row in reader)
 
-# @TODO port to CSV
 ASPECT_RATIOS = read_aspect_ratios('./aspect_ratios.csv')
 
 def find_aspect_ratio(x, y):
