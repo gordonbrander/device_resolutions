@@ -15,8 +15,8 @@ Devices Covered:
 - [ ] Popular Android tablets
 - [ ] Google Nexus
 - [ ] Google Pixel
-- [ ] Kindle Fire Tablet
-- [ ] Kindle Fire phone
+- [x] Kindle Fire Tablet
+- [ ] Kindle Fire Phone
 - [ ] Standard TV broadcast formats (1080p, 720p, etc)
 
 CSV includes information on `dp` (software pixels), `px` (hardware pixels), primary device orientation and screen measurements.
