@@ -28,6 +28,21 @@ def calc_ppi(width_px, height_px, hypotenuse_in):
     hypotenuse_px = calc_hypotenuse(width_px, height_px)
     return hypotenuse_px / hypotenuse_in
 
+def calc_screen_dimensions_in(width_px, height_px, ppi):
+    """
+    Calculate screen dimensions (width, height) in inches given dimensions
+    in px and pixels-per-inch (ppi).
+    """
+    return (width_px / float(ppi), height_px / float(ppi))
+
+def calc_screen_size_in(x_px, y_px, ppi):
+    """
+    Calculate diagonal screen size given dimensions in pixels and
+    pixels-per-inch (ppi)
+    """
+    a, b = calc_screen_dimensions_in(x_px, y_px, ppi)
+    return calc_hypotenuse(a, b)
+
 def read_aspect_ratios(file_csv):
     """
     Given a CSV file full of (x, y, name) aspect ratio descriptions, compile
