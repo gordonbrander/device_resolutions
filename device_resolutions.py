@@ -16,6 +16,10 @@ def as_landscape(x, y):
     """Given a dimensions, return that pair in landscape orientation"""
     return as_orientation(x, y, is_portrait=False)
 
+def is_portrait_primary(w, h):
+    """Given a width and a height, deterimine if portrait is primary."""
+    return h > w
+
 def calc_hypotenuse(a, b):
     """Calculate length of hypotenuse using Pythagorian theorem"""
     return sqrt(a**2 + b**2)
