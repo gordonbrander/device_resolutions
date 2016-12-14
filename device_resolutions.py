@@ -28,26 +28,18 @@ def calc_ppi(width_px, height_px, hypotenuse_in):
     hypotenuse_px = calc_hypotenuse(width_px, height_px)
     return hypotenuse_px / hypotenuse_in
 
+def read_aspect_ratios(file_csv):
+    """
+    Given a CSV file full of (x, y, name) aspect ratio descriptions, compile
+    a tuple of Python tuples.
+    """
+    with open(file_csv) as f:
+      reader = csv.reader(f, dialect="excel", quoting=csv.QUOTE_NONNUMERIC)
+      next(reader, None)  # skip the header row
+      return tuple(tuple(row) for row in reader)
+
 # @TODO port to CSV
-COMMON_ASPECT_RATIOS = (
-  (3, 4, "3:4"),
-  (1, 1, "1:1"),
-  (5, 4, "5:4"),
-  (4, 3, "4:3"),
-  (1.43, 1, "IMAX 1.43:1"),
-  (3, 2, "3:2"),
-  (5, 3, "5:3"),
-  (14, 9, "14:9"),
-  (16, 10, "16:10"),
-  (16, 9, "16:9"),
-  (17, 9, "17:9"),
-  (21, 9, "21:9"),
-  (1.375, 1, "Academy Ratio 1.375:1"),
-  (2.35, 1, "CinemaScope 2.35:1"),
-  (2.59, 1, "Cinemara 2.59:1"),
-  (2.75, 1, "Ultra Panavision 70 2.75:1"),
-  (2.76, 1, "MGM 65 2.76:1"),
-)
+ASPECT_RATIOS = read_aspect_ratios('./aspect_ratios.csv')
 
 def find_aspect_ratio(x, y):
     """
@@ -55,7 +47,7 @@ def find_aspect_ratio(x, y):
     of common aspect ratios.
     """
     ratio = x / y
-    for cx, cy, name in COMMON_ASPECT_RATIOS:
+    for cx, cy, name in ASPECT_RATIOS:
       if ratio == (cx/cy):
         return (ratio, cx, cy, name)
     return (ratio, ratio, 1, "")
