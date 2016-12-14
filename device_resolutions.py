@@ -2,6 +2,7 @@ from math import sqrt
 import csv
 
 def as_orientation(x, y, is_portrait=False):
+    """Given an x and y, return in orientation specified by `is_portrait`."""
     if is_portrait:
         return (y, x) if x > y else (x, y)
     else:
@@ -16,6 +17,7 @@ def as_landscape(x, y):
     return as_orientation(x, y, is_portrait=False)
 
 def calc_hypotenuse(a, b):
+    """Calculate length of hypotenuse using Pythagorian theorem"""
     return sqrt(a**2 + b**2)
 
 def calc_ppi(width_px, height_px, hypotenuse_in):
@@ -34,7 +36,7 @@ COMMON_ASPECT_RATIOS = (
   (4, 3, "4:3"),
   (1.43, 1, "IMAX 1.43:1"),
   (3, 2, "3:2"),
-  (5, 3, "5:3")
+  (5, 3, "5:3"),
   (14, 9, "14:9"),
   (16, 10, "16:10"),
   (16, 9, "16:9"),
@@ -44,7 +46,7 @@ COMMON_ASPECT_RATIOS = (
   (2.35, 1, "CinemaScope 2.35:1"),
   (2.59, 1, "Cinemara 2.59:1"),
   (2.75, 1, "Ultra Panavision 70 2.75:1"),
-  (2.76, 1, "MGM 65 2.76:1")
+  (2.76, 1, "MGM 65 2.76:1"),
 )
 
 def find_aspect_ratio(x, y):
