@@ -10,7 +10,9 @@ Devices Covered:
 
 - [x] iPhone (all)
 - [x] iPad (all)
-- [ ] Mac (soon to be all)
+- [ ] Macbook, iMac, Cinema Display
+- [x] Microsoft Surface, Surface Pro, Surface Book
+- [x] Microsoft Surface Studio
 - [ ] Popular Samsung and Samsung Galaxy phones
 - [ ] Popular Android tablets
 - [ ] Google Nexus
