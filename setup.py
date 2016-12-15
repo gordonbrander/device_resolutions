@@ -12,7 +12,7 @@ setup(
     description='A large collection of device resolution information',
     long_description=readme,
     license="MIT",
-    url="https://github.com/gordonbrander/swiss",
+    url="https://github.com/gordonbrander/device_resolutions",
     classifiers=[
         "Development Status :: 3 - Alpha",
         "Intended Audience :: Developers",
