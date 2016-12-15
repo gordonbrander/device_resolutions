@@ -7,7 +7,7 @@ with open(readme_path) as f:
 
 setup(
     name='device_resolutions',
-    version='0.0.1',
+    version='0.0.2',
     author='Gordon Brander',
     description='A large collection of device resolution information',
     long_description=readme,
