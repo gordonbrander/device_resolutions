@@ -1,5 +1,8 @@
 from math import sqrt
 import csv
+from device_resolutions.util import find_lowest
+from device_resolutions.devicerow import DeviceRow
+from device_resolutions.aspectratiorow import AspectRatioRow
 
 
 def as_orientation(x, y, is_portrait=False):
@@ -30,15 +33,6 @@ def calc_hypotenuse(a, b):
     return sqrt(a**2 + b**2)
 
 
-def calc_ppi(width_px, height_px, hypotenuse_in):
-    """
-    Given the diagnonal measurement of the screen in inches (`hypotenuse_in`),
-    calculate the pixels-per-inch (ppi) offered by the screen.
-    """
-    hypotenuse_px = calc_hypotenuse(width_px, height_px)
-    return hypotenuse_px / hypotenuse_in
-
-
 def calc_screen_dimensions_in(width_px, height_px, ppi):
     """
     Calculate screen dimensions (width, height) in inches given dimensions
@@ -54,31 +48,6 @@ def calc_screen_size_in(x_px, y_px, ppi):
     """
     a, b = calc_screen_dimensions_in(x_px, y_px, ppi)
     return calc_hypotenuse(a, b)
-
-nan = float('nan')
-
-def as_float(x):
-    try:
-        return float(x)
-    except ValueError:
-        return nan
-
-
-def AspectRatioRow((width, height, title)):
-    """Guard/validation function for aspect ratio rows"""
-    return (as_float(width), as_float(height), str(title))
-
-
-def DeviceRow((model, width_dp, height_dp, width_px, height_px, screen_in)):
-    """Guard/validation function for device rows"""
-    return (
-        str(model),
-        as_float(width_dp),
-        as_float(height_dp),
-        as_float(width_px),
-        as_float(height_px),
-        as_float(screen_in)
-    )
 
 
 def read_csv(f, Model):
